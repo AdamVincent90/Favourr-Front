@@ -10,7 +10,6 @@ EXPOSE 19006
 # due to default /opt permissions we have to create the dir with root and change perms
 WORKDIR /usr/src/app
 COPY . .
-WORKDIR /usr/src/app/Favourr-Front
 
 # install global packages
 RUN npm i -g expo-cli
