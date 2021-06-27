@@ -8,7 +8,7 @@ EXPOSE 19006
 ENV ADB_IP="192.168.112.101"
 ENV REACT_PACKAGE_MANAGER_HOSTNAME="192.168.1.1"
 
-RUN apt-get install && \
+RUN apt-get update && \
     apt-get install android-tools-adb
 
 WORKDIR /app
