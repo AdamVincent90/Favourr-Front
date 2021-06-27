@@ -129,7 +129,7 @@ export default {
     axios.get("/")
     .then(response => {
       console.log(response)
-      response.data = this.message
+      response.data[0] = this.message
     })
     .catch(e => console.log(e))
   }
