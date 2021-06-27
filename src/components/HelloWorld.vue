@@ -124,7 +124,7 @@ export default {
     }
   },
   beforeMount() {
-    axios.defaults.baseURL = "http://favourr-api:4000"
+    axios.defaults.baseURL = "http://localhost:4000"
     axios.defaults.withCredentials = false;
     axios.get("/")
     .then(response => {
