@@ -7,7 +7,7 @@ EXPOSE 19002
 EXPOSE 19006
 
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json .
 
 # install global packages
 RUN npm i -g expo-cli
