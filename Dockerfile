@@ -15,4 +15,6 @@ WORKDIR /usr/src/app
 COPY . .
 WORKDIR /usr/src/app/Favourr-Front
 
+RUN npm install
+
 CMD ["npm", "run", "start"]
