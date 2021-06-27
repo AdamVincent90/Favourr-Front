@@ -124,7 +124,9 @@ export default {
     }
   },
   beforeMount() {
-    axios.get("http://favourr-api:4000/")
+    axios.defaults.baseURL = "http://favourr-api:4000"
+    axios.defaults.withCredentials = false;
+    axios.get("/")
     .then(response => {
       console.log(response)
       response.data = this.message
