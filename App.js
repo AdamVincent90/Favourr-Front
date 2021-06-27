@@ -6,7 +6,7 @@ import HelloWorld from './components/HelloWorld';
 export default function App() {
   return (
     <View style={styles.container}>
-      <h6>React Native Application</h6>
+      <h3>React Native Application</h3>
       <HelloWorld/>
       <StatusBar style="auto" />
     </View>
