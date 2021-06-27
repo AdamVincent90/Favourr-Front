@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>{{message}} came from favourr api</h2>
+    <h2>{{message}}</h2>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -123,13 +123,13 @@ export default {
       message: null,
     }
   },
-  beforeMount() {
+  beforeCreate() {
     axios.defaults.baseURL = "http://localhost:4000"
     axios.defaults.withCredentials = false;
     axios.get("/")
     .then(response => {
       console.log(response)
-      response.data[0] = this.message
+      response.data = this.message
     })
     .catch(e => console.log(e))
   }
