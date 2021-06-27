@@ -1,8 +1,6 @@
 # pull base image
 FROM node:14.13.1-buster-slim
 
-EXPOSE 19006 19001 19002
-
 # install global packages
 RUN npm i --unsafe-perm -g npm@latest expo-cli@latest
 
@@ -11,5 +9,7 @@ RUN npm i --unsafe-perm -g npm@latest expo-cli@latest
 WORKDIR /app
 COPY . ./
 RUN npm install
+
+EXPOSE 19006 19001 19002 19000
 
 CMD ["expo", "start"]
