@@ -8,7 +8,7 @@ EXPOSE 19006
 
 # install dependencies first, in a different location for easier app bind mounting for local development
 # due to default /opt permissions we have to create the dir with root and change perms
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY . .
 
 # install global packages
