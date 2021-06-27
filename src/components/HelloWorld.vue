@@ -128,8 +128,8 @@ export default {
     axios.defaults.withCredentials = false;
     axios.get("/")
     .then(response => {
-      console.log(response)
-      response.data = this.message
+      res = JSON.parse(response.data)
+      this.message = res.title
     })
     .catch(e => console.log(e))
   }
