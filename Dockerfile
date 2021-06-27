@@ -10,6 +10,6 @@ WORKDIR /app
 COPY . ./
 RUN npm install
 
-EXPOSE 19006 19001 19002 19000
+EXPOSE 19006 19001 19003 19002 19000
 
-CMD ["npm", "run", "web"]
+CMD ["npm", "run", "start"]
