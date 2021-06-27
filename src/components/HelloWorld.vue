@@ -124,8 +124,9 @@ export default {
     }
   },
   beforeMount() {
-    axios.get("http://favourr_api:4000/")
+    axios.get("http://favourr-api:4000/")
     .then(response => {
+      console.log(response)
       response.data = this.message
     })
     .catch(e => console.log(e))
