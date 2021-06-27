@@ -12,4 +12,4 @@ RUN npm install
 
 EXPOSE 19006 19001 19002 19000
 
-CMD ["expo", "start"]
+CMD ["npm", "run", "web"]
