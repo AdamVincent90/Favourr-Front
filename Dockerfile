@@ -1,5 +1,5 @@
 # pull base image
-FROM node:latest-alpine
+FROM node:latest
 
 # install global packages
 RUN npm i -g npm@latest expo-cli@latest
