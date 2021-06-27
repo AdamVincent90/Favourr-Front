@@ -12,6 +12,8 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY . /usr/src/app/
 RUN npm install
 RUN npm install -g @vue/cli
+
+EXPOSE 8080
 # start app
 CMD ["npm", "run", "serve"]
 
