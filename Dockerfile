@@ -1,21 +1,34 @@
-FROM node:latest
+# pull base image
+FROM node:14.13.1-buster-slim
 
-EXPOSE 19000
-EXPOSE 19001
-EXPOSE 19002
-EXPOSE 19006
+# set our node environment, either development or production
+# defaults to production, compose overrides this to development on build and run
+ARG NODE_ENV=production
+ENV NODE_ENV $NODE_ENV
 
-ENV ADB_IP="192.168.112.101"
-ENV REACT_PACKAGE_MANAGER_HOSTNAME="192.168.1.1"
+# default to port 19006 for node, and 19001 and 19002 (tests) for debug
+ARG PORT=19006
+ENV PORT $PORT
+EXPOSE $PORT 19001 19002
 
-RUN apt-get update && \
-    apt-get install android-tools-adb
+# install global packages
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH /home/node/.npm-global/bin:$PATH
+RUN npm i --unsafe-perm -g npm@latest expo-cli@latest
 
-WORKDIR /app
-
+# install dependencies first, in a different location for easier app bind mounting for local development
+# due to default /opt permissions we have to create the dir with root and change perms
+RUN mkdir /opt/react_native_app && chown node:node /opt/react_native_app
+WORKDIR /opt/react_native_app
+ENV PATH /opt/react_native_app/.bin:$PATH
+USER node
 COPY . ./
+RUN npm install
 
-RUN YARN --network-timeout 100000
+# copy in our source code last, as it changes the most
+WORKDIR /opt/react_native_app/app
+# for development, we bind mount volumes; comment out for production
+# COPY ./react_native_app .
 
-CMD adb connect ${ADB_IP} && \
-    expo start
+ENTRYPOINT ["npm", "run"]
+CMD ["web"]
