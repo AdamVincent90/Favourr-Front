@@ -19,7 +19,7 @@ class HelloWorld extends React.Component {
     render() {
         return (
             <View>
-            <h1>{this.state.message} from golang</h1>
+            <h1>{this.state.message} from the go backend :)</h1>
             </View>
         )
     }

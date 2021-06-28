@@ -1,5 +1,5 @@
 # pull base image
-FROM node:14.00
+FROM node:latest
 
 EXPOSE 19000
 EXPOSE 19001
@@ -17,10 +17,7 @@ RUN npm i -g expo-cli
 RUN npm install
 
 
-RUN ls
-
 # install dependencies first, in a different location for easier app bind mounting for local development
 # due to default /opt permissions we have to create the dir with root and change perms
 
-
-CMD ["ls"]
+CMD ["npm", "start"]
